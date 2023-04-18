@@ -1,5 +1,6 @@
 package org.example.map;
 
+import org.example.model.Address;
 import org.example.model.Employee;
 
 import java.util.ArrayList;
@@ -13,11 +14,11 @@ public class MapVsFlatMapExample {
 
     public static void main(String[] args) {
 
-        Supplier<Stream<Employee>> supplierStream = () -> Stream.of(new Employee(1, "Vinit", "test@gmail.com", Arrays.asList("9876567651", "9876567656")),
-                new Employee(2, "Reema", "test1@gmail.com", Arrays.asList("9876567652", "9876567657")),
-                new Employee(3, "Aarohi", "test2@gmail.com", Arrays.asList("9876567653", "9876567658")),
-                new Employee(4, "Aahana", "test3@gmail.com", Arrays.asList("9876567654", "9876567659")),
-                new Employee(5, "Reema", "test4@gmail.com", Arrays.asList("9876567655", "9876567610"))
+        Supplier<Stream<Employee>> supplierStream = () -> Stream.of(new Employee(1, "Vinit", "test@gmail.com", Arrays.asList("9876567651", "9876567656"), new Address(1,"dswe","asda","ss",1233) ),
+                new Employee(2, "Reema", "test1@gmail.com", Arrays.asList("9876567652", "9876567657"), new Address(1,"dswe","asda","ss",1233)),
+                new Employee(3, "Aarohi", "test2@gmail.com", Arrays.asList("9876567653", "9876567658"), new Address(1,"dswe","asda","ss",1233)),
+                new Employee(4, "Aahana", "test3@gmail.com", Arrays.asList("9876567654", "9876567659"), new Address(1,"dswe","asda","ss",1233)),
+                new Employee(5, "Reema", "test4@gmail.com", Arrays.asList("9876567655", "9876567610"), new Address(1,"dswe","asda","ss",1233))
         );
 
 //        Stream<Employee> employeeStream = Stream.of(new Employee(1, "Vinit", "test@gmail.com", Arrays.asList("9876567651", "9876567656")),
