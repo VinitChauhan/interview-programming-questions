@@ -1,4 +1,4 @@
-package org.example.FunctinalInterface;
+package org.example.function;
 
 import org.example.model.Address;
 import org.example.model.Employee;

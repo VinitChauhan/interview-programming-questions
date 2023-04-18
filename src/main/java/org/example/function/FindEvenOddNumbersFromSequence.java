@@ -1,4 +1,4 @@
-package org.example.FunctinalInterface;
+package org.example.function;
 
 import java.util.Random;
 import java.util.UUID;
