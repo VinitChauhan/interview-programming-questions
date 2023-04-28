@@ -20,9 +20,9 @@ public class BubbleSort {
         //Time complexity
         //first for :- 1+n+n=1+2n
         //second for :- 1+n+n+n=1+3n
-        //1+2n+3n+6n^2=1+5n+6n^2
-        //6n^2+5n=5n(1n+1)=5n^2
-        //O(n^2)=Quadratic time
+        //(1+2n)(1+3n)-->1+3n+2n+6n^2-->1+5n+6n^2
+        //5n+6n^2-->n(5+6n)-->6n^2
+        //O(n^2)-->Quadratic time
     }
 }
 
