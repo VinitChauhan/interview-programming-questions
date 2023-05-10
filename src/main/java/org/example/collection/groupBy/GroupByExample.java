@@ -98,24 +98,21 @@ public class GroupByExample {
 
         //Find max number from list
         listSupplier.get().stream().collect(Collectors.maxBy(Comparator.naturalOrder())).ifPresent(System.out::println);
-
         System.out.print("\n");
 
-
-
+        //Breaking the list in 2 part
+        listSupplier.get().stream().collect(Collectors.partitioningBy(integer -> integer > 3))
+                .forEach((aBoolean, integers) -> System.out.print(aBoolean + " - " + integers + "\n"));
         System.out.print("\n");
 
+        //Perform operation on min an max element of this list
         System.out.print("\n");
-
-        System.out.print("\n");
-
-        System.out.print("\n");
-
-        System.out.print("\n");
-
-        System.out.print("\n");
-
-        System.out.print("\n");
+        Integer result = listSupplier.get().stream()
+                .collect(Collectors.teeing(
+                        Collectors.minBy(Integer::compareTo),
+                        Collectors.maxBy(Integer::compareTo),
+                        (min, max) -> min.get()+ max.get()));
+        System.out.print("\n"+"Teeing Operation : "+ result);
 
     }
 }
