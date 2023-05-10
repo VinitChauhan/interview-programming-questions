@@ -2,10 +2,7 @@ package org.example.collection.groupBy;
 
 import org.example.model.Contacts;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -23,6 +20,7 @@ public class GroupByExample {
                 new Contacts("Jagber", 39, 400),
                 new Contacts("Shyam", 39, 100)
         );
+
 //Group by age--> Group by except a single function
         Map<Integer, List<Contacts>> collect = contactsListSupplier.get().stream().collect(Collectors.groupingBy(Contacts::age));
         collect.forEach((age, contacts) -> {
@@ -39,20 +37,87 @@ public class GroupByExample {
         System.out.print("\n");
 
 // Summarise payment by contact name
-        Map<String, Integer> collect2 = contactsListSupplier.get().stream().collect(Collectors.groupingBy(Contacts::name, TreeMap::new ,Collectors.summingInt(Contacts::payments)));
+        Map<String, Integer> collect2 = contactsListSupplier.get().stream().collect(
+                Collectors.groupingBy(Contacts::name, TreeMap::new, Collectors.summingInt(Contacts::payments))
+        );
         collect2.forEach((name, payment) -> {
             System.out.println(name + "-" + payment);
         });
         System.out.print("\n");
 
 //Group by age
-        Map<Integer, List<String>> collect3 = contactsListSupplier.get().stream().collect(Collectors.groupingBy(Contacts::age,TreeMap::new,Collectors.mapping(Contacts::name, Collectors.toList())));
+        Map<Integer, List<String>> collect3 = contactsListSupplier.get().stream().collect(
+                Collectors.groupingBy(Contacts::age, TreeMap::new, Collectors.mapping(Contacts::name, Collectors.toList()))
+        );
         collect3.forEach((age, name) -> {
             System.out.println(age + "-" + name);
         });
         System.out.print("\n");
-    }
 
+        Supplier<List<Integer>> listSupplier = () -> Arrays.asList(1, 2, 3, 4, 5, 6);
+
+        //Collect in to list
+        listSupplier.get().stream().map(i -> i * 10).toList().forEach(System.out::println);
+        System.out.print("\n");
+
+        //Collect into Set
+        listSupplier.get().stream().map(i -> i * 10)
+                .collect(Collectors.toSet())
+                .forEach(System.out::println);
+        System.out.print("\n");
+
+        // collect into specific type of set
+        listSupplier.get().stream().map(i -> i * 10)
+                .collect(Collectors.toCollection(LinkedHashSet::new))
+                .forEach(System.out::println);
+        System.out.print("\n");
+
+        //Simple collect into map
+        listSupplier.get().stream().map(i -> i * 10)
+                .collect(Collectors.toMap(k -> k * 10, v -> v))
+                .forEach((k, v) -> System.out.print(k + " - " + v + "\n"));
+        System.out.print("\n");
+
+        //Key Collision
+        listSupplier.get().stream().map(i -> i * 10)
+                .collect(Collectors.toMap(k -> k * 10, v -> v, (k1, k2) -> Integer.valueOf(k1 + "-" + k2)))
+                .forEach((k, v) -> System.out.print(k + " - " + v + "\n"));
+        System.out.print("\n");
+
+        //providing map type
+        listSupplier.get().stream().map(i -> i * 10)
+                .collect(Collectors.toMap(k -> k * 10, v -> v, (k1, k2) -> Integer.valueOf(k1 + "-" + k2), TreeMap::new))
+                .forEach((k, v) -> System.out.print(k + " - " + v + "\n"));
+        System.out.print("\n");
+
+        //Collect and then perform operation
+        Integer collect7 = listSupplier.get().stream().map(i -> i * 10)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), List::size));
+        System.out.print("List Size : " + collect7);
+        System.out.print("\n");
+
+        //Find max number from list
+        listSupplier.get().stream().collect(Collectors.maxBy(Comparator.naturalOrder())).ifPresent(System.out::println);
+
+        System.out.print("\n");
+
+
+
+        System.out.print("\n");
+
+        System.out.print("\n");
+
+        System.out.print("\n");
+
+        System.out.print("\n");
+
+        System.out.print("\n");
+
+        System.out.print("\n");
+
+        System.out.print("\n");
+
+    }
 }
 
 
