@@ -21,12 +21,12 @@ tasks.test {
 sourceSets {
     main {
         java {
-            outputDir = file("build/classes/java/main")
+            //outputDir = file("build/classes/java/main")
         }
     }
     test {
         java {
-            outputDir = file("build/classes/java/test")
+           // outputDir = file("build/classes/java/test")
         }
     }
 }

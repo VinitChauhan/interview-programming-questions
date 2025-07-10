@@ -49,6 +49,6 @@ public class AddAllArrayElement {
         System.out.println("\nSecond Max : "+arr[arr.length - 2]);
 
         //Print middle element of array
-        System.out.println(arr[arr.length / 2]);
+        System.out.println("Middle Element : " + arr[arr.length / 2]);
     }
 }
