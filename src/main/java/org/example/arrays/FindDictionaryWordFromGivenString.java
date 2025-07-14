@@ -1,8 +1,13 @@
 package org.example.arrays;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class FindDictionaryWordFromGivenString {
     public static void main(String[] args) {
@@ -34,23 +39,19 @@ public class FindDictionaryWordFromGivenString {
         
         // Split dictionary into words
         String[] dictionary = dictionaryInput.split("\\s+");
-        
         // Create a map to store word occurrences
         Map<String, Integer> wordOccurrences = new HashMap<>();
-        
         // Check each dictionary word against the search string
         for (String word : dictionary) {
             // Use word boundary regex to match whole words only
             // (?i) makes the search case-insensitive
-            String regex = "(?i)\\b" + java.util.regex.Pattern.quote(word) + "\\b";
-            java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
-            java.util.regex.Matcher matcher = pattern.matcher(searchString);
-            
+            String regex = "(?i)\\b" + Pattern.quote(word) + "\\b";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(searchString);
             int count = 0;
             while (matcher.find()) {
                 count++;
             }
-            
             if (count > 0) {
                 wordOccurrences.put(word, count);
             }
@@ -66,4 +67,17 @@ public class FindDictionaryWordFromGivenString {
             }
         }
     }
+
+
+
+    //  String  str = "test,rest";
+    //    Map<String, Integer> filtered =Arrays.asList("test","best","rest","sats","rest","test","rest").stream()
+    //                                 .filter(s->{
+    //                                     List<String> tokens = Arrays.asList(str.split(","));
+    //                                     return tokens.contains(s);
+    //                                 })
+    //                                 .collect(Collectors.toMap(word -> word, word -> 1, Integer::sum));
+    //                                 // .collect(Collectors.toList());
+    // //    filtered.forEach(System.out::println);
+    // filtered.entrySet().forEach(System.out::println);
 }
