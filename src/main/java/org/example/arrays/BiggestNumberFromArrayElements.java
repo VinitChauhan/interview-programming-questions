@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Test {
+public class BiggestNumberFromArrayElements {
     
     public static void main(String[] args) {
 //        String str = "test,rest";
