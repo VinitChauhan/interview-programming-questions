@@ -27,6 +27,9 @@ public class BinarySearch {
     }
     private static Integer performBinarySearch(int[] array, int searchElement) {
         Arrays.sort(array);
+
+        //{2,2,3,4,4,5,6,7}
+
         System.out.print("Sorted Array : " + Arrays.toString(array));
         int low = 0;
         int high = array.length - 1;
