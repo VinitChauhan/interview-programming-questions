@@ -25,9 +25,13 @@ public class CheckPalindromeString {
             if(left<right && !Character.isLetterOrDigit(str.charAt(right))){
                 right--;
             }
-            if(Character.isLetterOrDigit(str.charAt(left))!= Character.isLetterOrDigit(str.charAt(right))){
+            if(Character.isDigit(str.charAt(left))!=Character.isDigit(str.charAt(right))){
                 return false;
-            }else {
+            }
+            if(Character.isLetter(str.charAt(left))!=Character.isLetter(str.charAt(right))){
+                return false;
+            }
+            else {
                 left++;right--;
             }
         }
