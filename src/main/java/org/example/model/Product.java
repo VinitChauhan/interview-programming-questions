@@ -1,4 +1,7 @@
 package org.example.model;
 
-public class Product {
-}
+public record Product (
+        int price,
+        String name
+){}
+

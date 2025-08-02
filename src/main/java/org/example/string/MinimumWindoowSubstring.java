@@ -12,6 +12,7 @@ public class MinimumWindoowSubstring {
             char currentChar = sourceStr.charAt(right);
             for (int i = 0; i < targetStr.length(); i++) {
                 if(targetStr.charAt(i)!=currentChar){
+                    
 
                 }
             }
