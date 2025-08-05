@@ -12,6 +12,8 @@ public class MergeTwoSortedArray {
         for (int i : arr2) {
             collect1.add(i);
         }
-        collect1.stream().sorted().forEach(System.out::println);
+        collect1.stream()
+                .sorted((o1, o2) -> o2.compareTo(o1))
+                .forEach(System.out::println);
     }
 }
