@@ -13,7 +13,7 @@ public class MergeTwoSortedArray {
             collect1.add(i);
         }
         collect1.stream()
-                .sorted((o1, o2) -> o2.compareTo(o1))
+                .sorted((o1, o2) -> o1.compareTo(o2))
                 .forEach(System.out::println);
     }
 }
